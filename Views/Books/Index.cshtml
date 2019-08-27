@@ -1,0 +1,18 @@
+@{
+    ViewData["Title"] = "Book";
+}
+
+@model IEnumerable<LibraryMvc.Models.Book>
+
+<h2>All Books</h2>
+<hr />
+
+@foreach (var book in Model)
+{
+    <ul>
+        <li>Title: @Html.ActionLink($"{book.Title}", "Details", new { id = book.BookId})</li>
+    </ul>
+}
+
+<hr>
+@Html.ActionLink("New Book", "Create")
