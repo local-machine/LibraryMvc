@@ -25,6 +25,7 @@ namespace LibraryMvc.Controllers
             return RedirectToAction("Index");
         }
 
+        // View details of particular Author by AuthorId
         public IActionResult Details(int id)
         {
             var thisAuthor = Author.GetThisAuthor(id);

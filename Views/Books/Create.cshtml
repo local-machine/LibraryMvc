@@ -4,14 +4,28 @@
 
 @model LibraryMvc.Models.Book
 
-    @using (Html.BeginForm())
-    {
+<h1>Add a New Book</h1>
+<hr>
+@using (Html.BeginForm())
+{
+    <input name="BookId" type="hidden" value="@ViewBag.BookId">
 
-        @Html.LabelFor(model => model.Title)<br>
+    <!-- Not positive regarding AuthorId -->
+    @*<input name="AuthorId" type="hidden" value="@ViewBag.AuthorId">*@
+    
+    @Html.LabelFor(model => model.Title)<br>
             <input data-val="true"  required id="Title" name="Title" type="text" value=""><hr>
 
          @Html.LabelFor(model => model.Genre)<br>
             <input data-val="true"  required id="Genre" name="Genre" type="text" value=""><hr>
+
+
+    <!-- Need Image input -->
+    <!-- Need a copy selection for one-to-many relationship-->
+    <!-- Need a author selection && hidden join table/authorbook input for many-to-many relationship-->
+
         <input type="submit" value="Add New Book" class="btn btn-outline-success"/>
-        
-    }
+        <br><br>
+}
+
+@Html.ActionLink("Cancel", "Details", "Authors", new { id = @ViewBag.AuthorId })

@@ -1,0 +1,15 @@
+@model LibraryMvc.Models.Book
+
+@{
+    ViewData["Title"] = "Delete Book";
+}
+
+<h2>Are you sure you want to delete this book?</h2>
+<h4><i>@Html.DisplayFor(model => model.Name)</i></h4>
+<hr>
+@using (Html.BeginForm())
+{
+    <input type="submit" class="btn btn-danger" value="Yes, Delete" />
+}
+<br>
+@Html.ActionLink("Cancel", "Details", new { id = Model.BookId })

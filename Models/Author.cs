@@ -93,9 +93,6 @@ namespace LibraryMvc.Models
                 response = await ApiCall.GetResponseContentAsync(client, request) as RestResponse;
             }).Wait();
         }
-
-
-
     }
 
 }

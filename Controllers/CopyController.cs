@@ -5,12 +5,15 @@ namespace LibraryMvc.Controllers
 {
     public class CopiesController : Controller
     {
+
+        // Display all Copies
         public IActionResult Index()
         {
             var allCopy = Copy.GetAllCopies();
             return View(allCopy);
         }
 
+        // Create new Copy
         public ActionResult Create()
         {
             return View();
@@ -23,7 +26,7 @@ namespace LibraryMvc.Controllers
             return RedirectToAction("Index");
         }
 
-
+        // Edit a particular Copy by CopyId
         public ActionResult Edit(int id)
         {
             var thisCopy = Copy.GetThisCopy(id);
@@ -37,10 +40,26 @@ namespace LibraryMvc.Controllers
             return RedirectToAction("Index");
         }
 
+
+        // View details of a particular Copy by CopyId
         public IActionResult Details(int id)
         {
             var thisCopy = Copy.GetThisCopy(id);
             return View(thisCopy);
         }
+
+        // Delete particular Copy by CopyId
+        public ActionResult Delete()
+        {
+            return View();
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            Copy.DeleteCopy(id);
+            return RedirectToAction("Index");
+        }
+        
     }
 }

@@ -9,10 +9,17 @@
 <hr>
 @using (Html.BeginForm())
 {
+    <input name="AuthorId" type="hidden" value="@ViewBag.AuthorId">
+
+     <!-- Not positive regarding BookId -->
+    @*<input name="BookId" type="hidden" value="@ViewBag.BookId">*@
+
     <div class="form-group">
         <label for="Name">Name</label>
         <input name="Name" type="text" class="form-control" required>
     </div>
+
+     <!-- Need a book selection for many-to-many relationship OR add book associated with author link-->
 
     <input type="submit" value="Add New Author" class="btn btn-primary"/><br><br>
     @Html.ActionLink("Cancel", "Index")

@@ -21,7 +21,7 @@ namespace LibraryMvc.Models
             Available = true;
         }
 
-
+        // Display all Copies
         public static List<Copy> GetAllCopies()
         {
             var client = new RestClient("http://localhost:5000/api/");
@@ -38,6 +38,7 @@ namespace LibraryMvc.Models
             return allCopies;
         }
 
+        // Display particular Copy by CopyId
         public static Copy GetThisCopy(int id)
         {
             var client = new RestClient("http://localhost:5000/api/");
@@ -54,11 +55,12 @@ namespace LibraryMvc.Models
             return thisCopy;
         }
 
+        // Create new Copy
         public static void CreateCopy(Copy copy)
         {
             var client = new RestClient("http://localhost:5000/api/");
             var request = new RestRequest("copies", Method.POST);
-                request.AddJsonBody(copy);
+            request.AddJsonBody(copy);
             var response = new RestResponse();
             Task.Run(async () =>
             {
@@ -66,6 +68,7 @@ namespace LibraryMvc.Models
             }).Wait();
         }
 
+        // Edit particular Copy by CopyId
         public static void EditCopy(Copy copy, int id)
         {
             var client = new RestClient("http://localhost:5000/api/");
@@ -77,5 +80,19 @@ namespace LibraryMvc.Models
                 response = await ApiCall.GetResponseContentAsync(client, request) as RestResponse;
             }).Wait();
         }
+
+        // Delete particular Copy by CopyId
+        public static void DeleteCopy(int id)
+        {
+            var client = new RestClient("http://localhost:5000/api/");
+            var request = new RestRequest("copies" + id, Method.DELETE);
+            var response = new RestResponse();
+
+            Task.Run(async () =>
+            {
+                response = await ApiCall.GetResponseContentAsync(client, request) as RestResponse;
+            }).Wait();
+        }
+
     }
 }
