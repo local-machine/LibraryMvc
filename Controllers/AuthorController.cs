@@ -31,18 +31,6 @@ namespace LibraryMvc.Controllers
             return View(thisAuthor);
         }
 
-        // Delete particular Author by AuthorId
-        public ActionResult Delete()
-        {
-            return View();
-        }
-        
-        [HttpDelete]
-        public IActionResult Delete(int id)
-        {
-            Author.DeleteAuthor(id);
-            return RedirectToAction("Index");
-        }
 
         // Edit a particular Author by AuthorId
         public IActionResult Edit(int id)
@@ -55,6 +43,19 @@ namespace LibraryMvc.Controllers
         public IActionResult Edit(int id, Author author)
         {
             Author.EditAuthor(id, author);
+            return RedirectToAction("Index");
+        }
+        
+        // Delete particular Author by AuthorId
+        public ActionResult Delete()
+        {
+            return View();
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            Author.DeleteAuthor(id);
             return RedirectToAction("Index");
         }
     }

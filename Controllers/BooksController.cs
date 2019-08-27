@@ -26,6 +26,13 @@ namespace LibraryMvc.Controllers
             return RedirectToAction("Index");
         }
 
+        // Display particular Book by BookId
+        public IActionResult Details(int id)
+        {
+            var thisBook = Book.GetThisBook(id);
+            return View(thisBook);
+        }
+
         // Edit a particular Book by BookId
         public ActionResult Edit(int id)
         {
@@ -40,12 +47,18 @@ namespace LibraryMvc.Controllers
             return RedirectToAction("Index");
         }
 
-
-        // Display particular Book by BookId
-        public IActionResult Details(int id)
+        // Delete particular Book by BookId
+        public ActionResult Delete()
         {
-            var thisBook = Book.GetThisBook(id);
-            return View(thisBook);
+            return View();
         }
+
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            Book.DeleteBook(id);
+            return RedirectToAction("Index");
+        }
+
     }
 }
