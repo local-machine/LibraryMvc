@@ -5,12 +5,15 @@ namespace LibraryMvc.Controllers
 {
     public class BooksController : Controller
     {
+        // Display all Books
         public IActionResult Index()
         {
             var allBook = Book.GetAllBooks();
             return View(allBook);
         }
 
+
+        // Create new Book
         public ActionResult Create()
         {
             return View();
@@ -23,7 +26,7 @@ namespace LibraryMvc.Controllers
             return RedirectToAction("Index");
         }
 
-
+        // Edit a particular Book by BookId
         public ActionResult Edit(int id)
         {
             var thisBook = Book.GetThisBook(id);
@@ -37,6 +40,8 @@ namespace LibraryMvc.Controllers
             return RedirectToAction("Index");
         }
 
+
+        // Display particular Book by BookId
         public IActionResult Details(int id)
         {
             var thisBook = Book.GetThisBook(id);

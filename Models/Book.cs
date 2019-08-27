@@ -24,7 +24,7 @@ namespace LibraryMvc.Models
             this.Copies = new HashSet<Copy>();
         }
 
-
+        // Display all Books
         public static List<Book> GetAllBooks()
         {
             var client = new RestClient("http://localhost:5000/api/");
@@ -41,6 +41,7 @@ namespace LibraryMvc.Models
             return allBooks;
         }
 
+        // Display particular Book by BookId
         public static Book GetThisBook(int id)
         {
             var client = new RestClient("http://localhost:5000/api/");
@@ -57,6 +58,8 @@ namespace LibraryMvc.Models
             return thisBook;
         }
 
+        // Create new Book
+
         public static void CreateBook(Book book)
         {
             var client = new RestClient("http://localhost:5000/api/");
@@ -69,6 +72,7 @@ namespace LibraryMvc.Models
             }).Wait();
         }
 
+        // Edit a particular Book by BookId
         public static void EditBook(Book book, int id)
         {
             var client = new RestClient("http://localhost:5000/api/");
@@ -80,9 +84,18 @@ namespace LibraryMvc.Models
                 response = await ApiCall.GetResponseContentAsync(client, request) as RestResponse;
             }).Wait();
         }
+
+        // Delete particular Book by BookId
+        public static void DeleteBook(int id)
+        {
+            var client = new RestClient("http://localhost:5000/api/");
+            var request = new RestRequest("books" + id, Method.DELETE);
+            var response = new RestResponse();
+
+            Task.Run(async () =>
+            {
+                response = await ApiCall.GetResponseContentAsync(client, request) as RestResponse;
+            }).Wait();
+        }
     }
-
-
-
-
 }

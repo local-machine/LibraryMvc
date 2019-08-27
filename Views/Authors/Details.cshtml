@@ -1,0 +1,30 @@
+@model LibraryMvc.Models.Author
+
+@{
+    ViewData["Title"] = "Author";
+}
+
+
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+
+<h2>Author - @Model.Name</h2>
+<hr>
+@Html.ActionLink("Edit Author", "Edit", new { id = Model.AuthorId })<br>
+@Html.ActionLink("Delete Author", "Delete", new { id = Model.AuthorId })
+<hr>
+<ul>
+    <li>Name: @Html.DisplayFor(modelItem => Model.Name)</li>
+
+</ul>
+<hr>
+<h5>Books for @Model.Name</h5>
+@foreach (var book in Model.Books)
+{
+    <ul>
+        @*<li>Book: @book.Title</li>*@
+    </ul>
+}
+
+@Html.ActionLink("Add a Author", "Create", "Authors", new { id = Model.AuthorId })
+<hr>
+@Html.ActionLink("Back", "Index")

@@ -1,0 +1,19 @@
+@{
+    ViewData["Title"] = "Create Author";
+}
+
+@model LibraryMvc.Models.Author
+
+
+<h1>Add a New Author</h1>
+<hr>
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        <label for="Name">Name</label>
+        <input name="Name" type="text" class="form-control" required>
+    </div>
+
+    <input type="submit" value="Add New Author" class="btn btn-primary"/><br><br>
+    @Html.ActionLink("Cancel", "Index")
+}

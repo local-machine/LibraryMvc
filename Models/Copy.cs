@@ -14,6 +14,13 @@ namespace LibraryMvc.Models
         public int BookId { get; set; }
         public ICollection<Book> Books { get; }
 
+        public bool Available { get; set; }
+
+        public Copy(bool Available)
+        {
+            Available = true;
+        }
+
 
         public static List<Copy> GetAllCopies()
         {
