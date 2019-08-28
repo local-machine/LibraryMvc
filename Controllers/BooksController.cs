@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using LibraryMvc.Models;
+using System;
 
 namespace LibraryMvc.Controllers
 {
@@ -40,22 +41,23 @@ namespace LibraryMvc.Controllers
             return View(thisBook);
         }
 
-        [HttpPut]
-        public IActionResult Edit(Book book, int id)
+        [HttpPost]
+        public IActionResult Edit(int id, Book book)
         {
-            Book.EditBook(book, id);
+            Book.EditBook(id, book);
             return RedirectToAction("Index");
         }
 
-        // Delete particular Book by BookId
-        public ActionResult Delete()
-        {
-            return View();
-        }
+        // // Delete particular Book by BookId
+        // public ActionResult Delete()
+        // {
+        //     return View();
+        // }
 
-        [HttpDelete]
+        
         public IActionResult Delete(int id)
         {
+            Console.WriteLine("Deleting.. from Controller");
             Book.DeleteBook(id);
             return RedirectToAction("Index");
         }

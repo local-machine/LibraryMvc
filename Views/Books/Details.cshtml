@@ -1,0 +1,31 @@
+@model LibraryMvc.Models.Book
+
+@{
+    ViewData["Title"] = "Book";
+}
+
+
+
+
+<h2>Book - @Model.Title</h2>
+<hr>
+@Html.ActionLink("Edit Book", "Edit", new { id = Model.BookId })<br>
+@Html.ActionLink("Delete Book", "Delete", new { id = Model.BookId })
+<hr>
+<ul>
+    <li>Title: @Html.DisplayFor(modelItem => Model.Title)</li>
+
+</ul>
+<hr>
+<h5>Info for @Model.Title</h5>
+@foreach (var book in Model.Authors)
+{
+    <ul>
+        <!-- Not positive regarding Book Title retrieval -->
+        @*<li>Book: @BookBook.Book.Title</li>*@
+    </ul>
+}
+
+@Html.ActionLink("Add a Book", "Create", "Books", new { id = Model.BookId })
+<hr>
+@Html.ActionLink("Back", "Index")

@@ -1,0 +1,18 @@
+
+@model LibraryMvc.Models.Book
+@{
+    ViewData["Title"] = "Book";
+}
+
+<h1>Update your Book</h1>
+<hr>
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        <label for="Name">Name</label>
+        <input name="Name" type="text" class="form-control" value="@Model.Title" required>
+    </div>
+
+    <input type="submit" value="Save Changes" class="btn btn-primary"/><br><br>
+    @Html.ActionLink("Cancel", "Index")
+}

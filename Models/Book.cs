@@ -14,15 +14,12 @@ namespace LibraryMvc.Models
         public int BookId { get; set; }
         public string Title { get; set; }
         public string Genre { get; set; }
-        public string Image { get; set; }
 
         public virtual ICollection<AuthorBook> Authors { get; set; }
-        public virtual ICollection<Copy> Copies { get;}
 
         public Book()
         {
             this.Authors = new HashSet<AuthorBook>();
-            this.Copies = new HashSet<Copy>();
         }
 
         // Display all Books
@@ -64,7 +61,7 @@ namespace LibraryMvc.Models
         public static void CreateBook(Book book)
         {
             var client = new RestClient("http://localhost:5000/api/");
-            var request = new RestRequest("books", Method.POST);
+            var request = new RestRequest("books/", Method.POST);
                 request.AddJsonBody(book);
             var response = new RestResponse();
             Task.Run(async () =>
@@ -74,10 +71,10 @@ namespace LibraryMvc.Models
         }
 
         // Edit a particular Book by BookId
-        public static void EditBook(Book book, int id)
+        public static void EditBook(int id, Book book)
         {
             var client = new RestClient("http://localhost:5000/api/");
-            var request = new RestRequest("books/" + id, Method.PUT);
+            var request = new RestRequest("books/" + id, Method.POST);
             request.AddJsonBody(book);
             var response = new RestResponse();
             Task.Run(async () =>
@@ -90,7 +87,7 @@ namespace LibraryMvc.Models
         public static void DeleteBook(int id)
         {
             var client = new RestClient("http://localhost:5000/api/");
-            var request = new RestRequest("books" + id, Method.DELETE);
+            var request = new RestRequest("books/" + id, Method.DELETE);
             var response = new RestResponse();
 
             Task.Run(async () =>
