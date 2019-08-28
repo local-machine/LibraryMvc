@@ -34,11 +34,11 @@ namespace LibraryMvc.Controllers
             return View(thisBook);
         }
 
-        // Edit a particular Book by BookId
-        public ActionResult Edit(int id)
+        //Edit a particular Book by BookId
+        public IActionResult Edit(int id)
         {
-            var thisBook = Book.GetThisBook(id);
-            return View(thisBook);
+            var particularBook = Book.GetThisBook(id);
+            return View(particularBook);
         }
 
         [HttpPost]

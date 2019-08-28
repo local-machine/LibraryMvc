@@ -70,19 +70,6 @@ namespace LibraryMvc.Models
             }).Wait();
         }
 
-        // Edit a particular Book by BookId
-        public static void EditBook(int id, Book book)
-        {
-            var client = new RestClient("http://localhost:5000/api/");
-            var request = new RestRequest("books/" + id, Method.POST);
-            request.AddJsonBody(book);
-            var response = new RestResponse();
-            Task.Run(async () =>
-            {
-                response = await ApiCall.GetResponseContentAsync(client, request) as RestResponse;
-            }).Wait();
-        }
-
         // Delete particular Book by BookId
         public static void DeleteBook(int id)
         {
@@ -90,6 +77,19 @@ namespace LibraryMvc.Models
             var request = new RestRequest("books/" + id, Method.DELETE);
             var response = new RestResponse();
 
+            Task.Run(async () =>
+            {
+                response = await ApiCall.GetResponseContentAsync(client, request) as RestResponse;
+            }).Wait();
+        }
+        
+                // Edit a particular Book by BookId
+        public static void EditBook(int id, Book book)
+        {
+            var client = new RestClient("http://localhost:5000/api/");
+            var request = new RestRequest("books/" + id, Method.POST);
+            request.AddJsonBody(book);
+            var response = new RestResponse();
             Task.Run(async () =>
             {
                 response = await ApiCall.GetResponseContentAsync(client, request) as RestResponse;

@@ -9,8 +9,11 @@
 @using (Html.BeginForm())
 {
     <div class="form-group">
-        <label for="Name">Name</label>
-        <input name="Name" type="text" class="form-control" value="@Model.Title" required>
+        <label for="Title">Title</label>
+        <input name="Title" type="text" class="form-control" value="@Model.Title" required>
+        <label for="Genre">Genre</label>
+        <input name="Genre" type="text" class="form-control" value="@Model.Title" required>
+
     </div>
 
     <input type="submit" value="Save Changes" class="btn btn-primary"/><br><br>
