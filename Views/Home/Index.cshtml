@@ -2,8 +2,16 @@
     Layout = "_Layout";
 }
 
+<div class="card">
 <h1>Welcome to the Library!</h1>
-
-@Html.ActionLink("See Authors", "Index", "Authors")
+</div>
+<div class = "homeButtons">
+<button type="button" class="btn">@Html.ActionLink("Authors", "Index", "Authors")</button>
+ <img class="card-img-top imageThumbnail" style = "min-width: 2rem; max-width:4%;" src="@Url.Content("~/img/Author.png")"/>
 <br/>
-@Html.ActionLink("See Books", "Index", "Books")
+<button>@Html.ActionLink("Books", "Index", "Books")</button>
+<img class="card-img-top imageThumbnail" style = "min-width: 2rem; max-width:4%;" src="@Url.Content("~/img/Book.png")"/>
+</div>
+@section IndexPage{
+    <img src="img/bookshelf.png" alt="Picture of a bookshelf">
+}

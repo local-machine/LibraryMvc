@@ -21,7 +21,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LibraryMvc</a>
+                <img src= "img/LibLogo.png" style = "min-width: 4rem; max-width:6%;">
            @*     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -29,11 +29,12 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link1 text-dark" asp-area="" asp-controller="Home" asp-action="Index">◄ Home</a>
+                        
+                        
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" ><span style = "font-size: 25px;">&#9997;&#127997;</span>Registor</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+                        
                     </ul>
                 </div>
             </div>
@@ -43,7 +44,12 @@
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
             @RenderBody()
+            @section IndexPage{
                    <img src="img/bookshelf.png" alt="Picture of a bookshelf">
+            }
+            @section AuthorPage{
+                   <img src="img/Author.png" alt="Picture of a bookshelf">
+            }
         </main>
     </div>
 
@@ -74,5 +80,7 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
+     @RenderSection("IndexPage", required: false)
+      @RenderSection("AuthorPage", required: false)
 </body>
 </html>
