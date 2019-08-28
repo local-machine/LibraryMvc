@@ -48,16 +48,9 @@ namespace LibraryMvc.Controllers
             return RedirectToAction("Index");
         }
 
-        // // Delete particular Book by BookId
-        // public ActionResult Delete()
-        // {
-        //     return View();
-        // }
 
-        
         public IActionResult Delete(int id)
         {
-            Console.WriteLine("Deleting.. from Controller");
             Book.DeleteBook(id);
             return RedirectToAction("Index");
         }

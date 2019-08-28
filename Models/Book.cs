@@ -62,7 +62,7 @@ namespace LibraryMvc.Models
         {
             var client = new RestClient("http://localhost:5000/api/");
             var request = new RestRequest("books/", Method.POST);
-                request.AddJsonBody(book);
+            request.AddJsonBody(book);
             var response = new RestResponse();
             Task.Run(async () =>
             {
@@ -82,8 +82,8 @@ namespace LibraryMvc.Models
                 response = await ApiCall.GetResponseContentAsync(client, request) as RestResponse;
             }).Wait();
         }
-        
-                // Edit a particular Book by BookId
+
+        // Edit a particular Book by BookId
         public static void EditBook(int id, Book book)
         {
             var client = new RestClient("http://localhost:5000/api/");
