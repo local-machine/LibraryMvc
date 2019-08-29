@@ -1,32 +1,52 @@
 @{
+    Layout="_Layout";
     ViewData["Title"] = "Create Book";
 }
 
-@model LibraryMvc.Models.Book
+@using Library.ViewModel
+@model LibraryViewModel
 
 <h1>Add a New Book</h1>
 <hr>
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Books", FormMethod.Post,new{ enctype="multipart/form-data"}))
 {
     <input name="BookId" type="hidden" value="@ViewBag.BookId">
 
     <!-- Not positive regarding AuthorId -->
     @*<input name="AuthorId" type="hidden" value="@ViewBag.AuthorId">*@
     
-    @Html.LabelFor(model => model.Title)<br>
-            <input data-val="true"  required id="Title" name="Title" type="text" value=""><hr>
-
-         @Html.LabelFor(model => model.Genre)<br>
-            <input data-val="true"  required id="Genre" name="Genre" type="text" value=""><hr>
+    @Html.LabelFor(model => model.Title)
+    @Html.TextBoxFor(model => model.Title)
+    <hr>
+    @Html.LabelFor(model => model.Genre)
+    @Html.TextBoxFor(model => model.Genre)
+    <hr>
+    @Html.LabelFor(model => model.Photo)
+    @Html.TextBoxFor(model => model.Photo, new { type = "file" })
 
 
     <!-- Need Image input -->
     <!-- Need a copy selection for one-to-many relationship-->
     <!-- Need a author selection && hidden join table/authorbook input for many-to-many relationship-->
 
-        <input type="submit" value="Add New Book" class="btn btn-outline-success"/>
-        <br><br>
-        @Html.ActionLink("Cancel", "Details", "Authors", new { id = @ViewBag.AuthorId })
+    <p><button type="submit" class="btn btn-primary"> Add New Book </button></p>
+    <br><br>
+    @Html.ValidationSummary()
+
+ @section Scripts {
+        <script>
+            $(document).ready(function () {
+                $('.custom-file-input').on("change", function () {
+                    var fileName = $(this).val().split("\\").pop();
+                    $(this).next('.custom-file-label').html(fileName);
+                });
+            });
+        </script>
+    }
+}
+
+        <p> @Html.ActionLink("Show all the Courses", "Index")</p>
+     @Html.ActionLink("Cancel", "Details", "Authors", new { id = @ViewBag.AuthorId })
 }
 
 

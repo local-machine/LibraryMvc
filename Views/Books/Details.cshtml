@@ -1,23 +1,16 @@
 @model LibraryMvc.Models.Book
 
 @{
-
     Layout = "_Layout";
-
 }
-
-
-
-
 <h2>Book - @Model.Title</h2>
 <hr>
 @Html.ActionLink("Edit Book", "Edit", new { id = Model.BookId })<br>
 @Html.ActionLink("Delete Book", "Delete", new { id = Model.BookId })
-<hr>
-<ul>
-    <li>Title: @Html.DisplayFor(modelItem => Model.Title)</li>
 
-</ul>
+<hr>
+    <li>Title: @Html.DisplayFor(modelItem => Model.Title)</li>
+    
 <hr>
 <h5>Info for @Model.Title</h5>
 @foreach (var book in Model.Authors)

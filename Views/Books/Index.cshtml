@@ -3,23 +3,42 @@
     ViewData["Title"] = "Book";
 }
 
-@model IEnumerable<LibraryMvc.Models.Book>
+@model List<LibraryMvc.Models.Book>
 
 <h2>All Books</h2>
 <hr />
 
-@foreach (var book in Model)
-{
-    <ul>
-        <img class="card-img-top imageThumbnail" style = "min-width: 2rem; max-width:4%;" src="@Url.Content("~/img/Book.png")"/>
-         @Html.ActionLink($"{book.Title}", "Details", new { id = book.BookId})
-    </ul>
-}
-<br>
-<span style= "font-size: 25px;">&#128072;</span>@Html.ActionLink("Previous", "IndexPrev") | @Html.ActionLink("Next", "IndexNext")<span style= "font-size: 25px;">&#128073;</span>
+   @if (Model.Count == 0)
+    {
+        <h3> No Books have been added yet!</h3>
+    }
+<div class="card-deck">
+    @foreach (var Book in Model)
+    {
+        var photoPath = "~/images/" + (Book.Image ?? "noimage.jpg");
+        <ul>
+            <div class="card m-3" style="min-width: 18rem; max-width:30.5%;">
+            <div class="card-header">
+               <img class="card-img-top imageThumbnail" style = "min-width: 2rem; max-width:4%;" src="@Url.Content("~/img/Book.png")"/>
+               @Html.ActionLink($"{Book.Title}", "Details", new { id = Book.BookId})
+            </div>
+            <img class="card-img-top imageThumbnail" src="@Url.Content(@photoPath)"/>
+            </div>
+        </ul>
+    }
+    <br>
+    <span style= "font-size: 25px;">&#128072;</span>@Html.ActionLink("Previous", "IndexPrev") | @Html.ActionLink("Next", "IndexNext")<span style= "font-size: 25px;">&#128073;</span>
 <hr>
 
 <br>
+    <div class="card-footer text-center">
+                
 <button style= "font-size: 13px;">@Html.ActionLink("New Book", "Create")</button>
 <button style= "font-size: 13px;">@Html.ActionLink("Return", "Index", "Home")</button>
+        </div>
+</div>
+
+
+
+
 
