@@ -1,11 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
 using LibraryMvc.Models;
-using System;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Linq;
+
 
 namespace LibraryMvc.Controllers
 {
     public class BooksController : Controller
     {
+        private readonly LibraryContext _db;
+        
         // Display all Books
         public IActionResult Index()
         {
@@ -17,6 +21,7 @@ namespace LibraryMvc.Controllers
         // Create new Book
         public ActionResult Create()
         {
+           ViewBag.AuthorId = new SelectList(Author.GetAllAuthors(), "AuthorId", "Name");
             return View();
         }
 
