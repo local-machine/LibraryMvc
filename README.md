@@ -36,7 +36,9 @@ Library MVC with many-to-many relationship between author and book. This website
 | Users can read all the books. | User clicks, "See Books". | All previously created books by that user are listed. |
 | Users can see the details of a specific book. | User clicks, "See Books", clicks a previously created book. | Book details appear. |
 | Users can create new authors. | User clicks, "See Authors", "New Author", fill out the form and clicks "Add New Author". | New author is created. |
+<!-- | Users can create new authors associated with a previously created book. | User clicks, "See Authors", "New Author", fill out the form (including associated book) and clicks "Add New Author". | New author associated with a book is created. | -->
 | Users can create new books. | User clicks, "See Books", clicks "New Book", fill out a form and clicks "Add New Book". | New book for that author is created. |
+<!-- | Users can create new books associated with a previously created author. | User clicks, "See Books", "New Book", fill out the form (including associated author) and clicks "Add New Book". | New book associated with a book is created. | -->
 | Users can update a particular book or author. | User clicks, "See Books/Authors", clicks a previously created line item, clicks "Edit Book/Author", fills out a form and clicks "Save".  | Author or book is updated. |
 | Users can delete a particular book or author. | User clicks, "See Books", clicks a previously created line item, clicks "Delete author/book", clicks "Delete".  | Author or book is deleted. |
 ---
