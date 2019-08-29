@@ -71,8 +71,9 @@ namespace LibraryMvc.Models
         public static void DeleteAuthor(int id)
         {
             var client = new RestClient("http://localhost:5000/api/");
-            var request = new RestRequest("authors" + id, Method.DELETE);
+            var request = new RestRequest("authors/" + id, Method.DELETE);
             var response = new RestResponse();
+            Console.WriteLine("Deleting..");
 
             Task.Run(async () =>
             {
@@ -84,7 +85,7 @@ namespace LibraryMvc.Models
         public static void EditAuthor(int id, Author author)
         {
             var client = new RestClient("http://localhost:5000/api/");
-            var request = new RestRequest("authors" + id, Method.PUT);
+            var request = new RestRequest("authors/" + id, Method.POST);
             request.AddJsonBody(author);
             var response = new RestResponse();
 
