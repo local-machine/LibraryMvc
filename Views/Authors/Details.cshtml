@@ -20,10 +20,11 @@
 <h5>Books for @Model.Name</h5>
 @foreach (var book in Model.Books)
 {
-    <ul>
+   @* <ul>
         <!-- Not positive regarding Book Title retrieval -->
-        @*<li>Book: @AuthorBook.Book.Title</li>*@
-    </ul>
+        <li>Book: @AuthorBook.AuthorBookId.Title</li>
+        <li>Book: @Author.Books.AuthorBook.Title</li>
+    </ul>*@
 }
 
 @Html.ActionLink("Add a Author", "Create", "Authors", new { id = Model.AuthorId })

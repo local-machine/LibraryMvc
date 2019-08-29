@@ -26,6 +26,7 @@
 
         <input type="submit" value="Add New Book" class="btn btn-outline-success"/>
         <br><br>
+        @Html.ActionLink("Cancel", "Details", "Authors", new { id = @ViewBag.AuthorId })
 }
 
-@Html.ActionLink("Cancel", "Index")
+
