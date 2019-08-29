@@ -95,5 +95,17 @@ namespace LibraryMvc.Models
                 response = await ApiCall.GetResponseContentAsync(client, request) as RestResponse;
             }).Wait();
         }
+
+        // Add An Author to a book
+        public static void AddAuthor (int bookId, int authorId)
+        {
+            var client= new RestClient("http://localhost:5000/api/");
+            var request= new RestRequest("books/"+ bookId +"/author/"+authorId, Method.POST);
+            var response= new RestResponse();
+            Task.Run(async () =>
+            {
+                 response= await  ApiCall.GetResponseContentAsync(client,request) as RestResponse;
+                 }).Wait();
+            }
     }
 }

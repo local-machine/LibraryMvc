@@ -1,4 +1,6 @@
 
+
+
 @model LibraryMvc.Models.Book
 @{
     ViewData["Title"] = "Book";
@@ -9,12 +11,14 @@
 @using (Html.BeginForm())
 {
     <div class="form-group">
+
         <label for="Title">Title</label>
         <input name="Title" type="text" class="form-control" value="@Model.Title" required>
         <label for="Genre">Genre</label>
-        <input name="Genre" type="text" class="form-control" value="@Model.Title" required>
+        <input name="Genre" type="text" class="form-control" value="@Model.Genre" required>
       @*   @Html.Label("Select Author")
     @Html.DropDownList("AuthorId")*@
+
 
     </div>
 

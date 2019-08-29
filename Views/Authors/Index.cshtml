@@ -1,19 +1,24 @@
 @{
+    Layout = "_Layout";
     ViewData["Title"] = "Author";
 }
 
 @model IEnumerable<LibraryMvc.Models.Author>
 
-<h2>All Authors</h2>
+<h2 style="text-align: center;" >List of all the Authors</h2>
 <hr />
 
 @foreach (var author in Model)
 {
     <ul>
-        <li>Name: @Html.ActionLink($"{author.Name}", "Details", new { id = author.AuthorId})</li>
+        <p><span style = "font-size: 35px;">&#129333;&#127995;</span> @Html.ActionLink($"{author.Name}", "Details", new { id = author.AuthorId})</p>
     </ul>
 }
-
+<br>
+<span style= "font-size: 25px;">&#128072;</span>@Html.ActionLink("Previous", "IndexPrev") | @Html.ActionLink("Next", "IndexNext")<span style= "font-size: 25px;">&#128073;</span>
 <hr>
-@Html.ActionLink("New Author", "Create")
-@Html.ActionLink("Return", "Index", "Home")
+
+<br>
+<button style= "font-size: 15px;"> @Html.ActionLink("New Author", "Create")</button>
+<button style= "font-size: 15px;">@Html.ActionLink("Return", "Index", "Home")</button>
+
