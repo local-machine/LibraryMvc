@@ -10,7 +10,8 @@ namespace LibraryMvc.Controllers
         public IActionResult Index()
         {
             var allBook = Book.GetAllBooks();
-            return View(allBook);
+            //return View(_db.Books.ToList());
+           return View(allBook);
         }
 
 
@@ -31,6 +32,10 @@ namespace LibraryMvc.Controllers
         public IActionResult Details(int id)
         {
             var thisBook = Book.GetThisBook(id);
+            // var thisBook = _db.Books
+            // .Include(Book => Book.Authors)
+            // .ThenInclude(JsonPatchExtensions => JsonPatchExtensions.Author)
+            // .FirstOrDefault(Book => BookId == id);
             return View(thisBook);
         }
 

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using LibraryMvc.Models;
 using System;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace LibraryMvc.Controllers
 {
@@ -14,8 +15,9 @@ namespace LibraryMvc.Controllers
         }
 
         // Create new Author
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
+            ViewBag.BookId = id;
             return View();
         }
 
